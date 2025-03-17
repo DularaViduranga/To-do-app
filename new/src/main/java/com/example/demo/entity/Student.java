@@ -24,7 +24,7 @@ public class Student {
     @Column(name = "student_address", length = 150)
     private String studentAddress;
 
-    @OneToMany(mappedBy="student")
+    @OneToMany(mappedBy="student", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Task> tasks;
 
 }

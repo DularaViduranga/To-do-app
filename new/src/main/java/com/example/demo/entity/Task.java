@@ -16,19 +16,29 @@ import java.time.LocalDateTime;
 @Table(name = "task")
 public class Task {
     @Id
+    @Column(name = "order_id", length = 45)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long order_id;
 
+    @Column(name = "title", length = 45)
     private String title;
+
+    @Column(name = "description", length = 45)
     private String description;
+
+    @Column(name = "completed", columnDefinition = "TINYINT default 0")
     private boolean completed;
 
+
+    @Column(name = "created_at",columnDefinition = "DATETIME")
     @CreationTimestamp
     private LocalDateTime createdAt;
 
+    @Column(name = "updated_at",columnDefinition = "DATETIME")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    @Column(name = "completed_at",columnDefinition = "DATETIME")
     private LocalDateTime completedAt;
 
     @ManyToOne
@@ -38,5 +48,11 @@ public class Task {
     public void markAsCompleted() {
         this.completed = true;
         this.completedAt = LocalDateTime.now();
+    }
+
+    public Task(String title, String description, Student student) {
+        this.student = student;
+        this.title = title;
+        this.description = description;
     }
 }
