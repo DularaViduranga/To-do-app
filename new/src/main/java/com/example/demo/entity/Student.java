@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "fullstack")
+@Table(name = "student")
 public class Student {
     @Id
     @Column(name = "student_id", length = 45)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int studentId;
 
     @Column(name = "student_name", length = 180, nullable = false)
@@ -21,5 +21,6 @@ public class Student {
 
     @Column(name = "student_address", length = 150)
     private String studentAddress;
+    
 
 }

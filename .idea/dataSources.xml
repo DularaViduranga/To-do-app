@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="fullstack@localhost" uuid="38ec0f96-5c88-430b-bec5-1db2ebd14f57">
+    <data-source source="LOCAL" name="TODO" uuid="a9dc73c3-c266-4cd1-be59-cd68f61a647b">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
