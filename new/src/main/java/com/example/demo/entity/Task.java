@@ -31,6 +31,9 @@ public class Task {
 
     private LocalDateTime completedAt;
 
+    @ManyToOne
+    @JoinColumn(name="student_id", nullable=false)
+    private Student student;
 
     public void markAsCompleted() {
         this.completed = true;

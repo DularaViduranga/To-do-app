@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -21,6 +23,8 @@ public class Student {
 
     @Column(name = "student_address", length = 150)
     private String studentAddress;
-    
+
+    @OneToMany(mappedBy="student")
+    private Set<Task> tasks;
 
 }
