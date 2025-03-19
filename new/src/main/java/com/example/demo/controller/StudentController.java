@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/test")
+@RequestMapping("api/v1/todo")
 @CrossOrigin
 public class StudentController {
 
@@ -52,7 +52,7 @@ public class StudentController {
     public ResponseEntity<StandardResponse> deleteStudent(@PathVariable(value = "id")int id){
         int deletedStudent = studentService.deleteStudent(id);
         return new ResponseEntity<StandardResponse>(
-               new StandardResponse(200,"Item deletion success ",id),
+               new StandardResponse(200,"Student deletion success ",deletedStudent),
                HttpStatus.CREATED
        );
     }

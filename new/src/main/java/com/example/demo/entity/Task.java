@@ -15,10 +15,11 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "task")
 public class Task {
+
     @Id
-    @Column(name = "order_id", length = 45)
+    @Column(name = "task_id", length = 45)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long order_id;
+    private Long taskId;
 
     @Column(name = "title", length = 45)
     private String title;
@@ -29,20 +30,19 @@ public class Task {
     @Column(name = "completed", columnDefinition = "TINYINT default 0")
     private boolean completed;
 
-
-    @Column(name = "created_at",columnDefinition = "DATETIME")
+    @Column(name = "created_at", columnDefinition = "DATETIME")
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at",columnDefinition = "DATETIME")
+    @Column(name = "updated_at", columnDefinition = "DATETIME")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @Column(name = "completed_at",columnDefinition = "DATETIME")
+    @Column(name = "completed_at", columnDefinition = "DATETIME")
     private LocalDateTime completedAt;
 
     @ManyToOne
-    @JoinColumn(name="student_id", nullable=false)
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
     public void markAsCompleted() {
@@ -56,3 +56,4 @@ public class Task {
         this.description = description;
     }
 }
+
