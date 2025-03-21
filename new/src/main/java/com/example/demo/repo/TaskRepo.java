@@ -10,4 +10,7 @@ public interface TaskRepo extends JpaRepository<Task, Integer> {
 
     @Query("SELECT t FROM Task t WHERE t.student.studentId = :id")
     List<Task> getTaskByStudentId(int id);
+
+    @Query("Select t from Task t where t.completed = :status")
+    List<Task> getTaskByActiveState(boolean status);
 }

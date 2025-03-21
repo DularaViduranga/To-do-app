@@ -2,6 +2,7 @@ package com.example.demo.service.IMPL;
 
 import com.example.demo.dto.StudentDTO;
 import com.example.demo.dto.request.TaskSaveRequestDTO;
+import com.example.demo.dto.response.TaskByActiveStatusResponseDTO;
 import com.example.demo.dto.response.TaskByNameReponseDTO;
 import com.example.demo.entity.Student;
 import com.example.demo.entity.Task;
@@ -49,19 +50,20 @@ public class TaskServiceIMPL implements TaskService {
     }
 
     @Override
-    public List<TaskByNameReponseDTO> getTaskByStudentName(int id) {
+    public List<TaskByNameReponseDTO> getTaskByStudentID(int id) {
         List<Task> getTaskByStudentId = taskRepo.getTaskByStudentId(id);
         List<TaskByNameReponseDTO> taskByNameReponseDTOS = modelMapper.map(getTaskByStudentId, new TypeToken<List<TaskByNameReponseDTO>>() {}.getType());
         return taskByNameReponseDTOS;
 
     }
 
-//    @Override
-//    public List<StudentDTO> getAllStudents() {
-//        List<Student> getStudents = StreamSupport
-//                .stream(studentRepo.findAll().spliterator(), false)
-//                .collect(Collectors.toList());
-//        List<StudentDTO> studentDTOS = modelMapper.map(getStudents, new TypeToken<List<StudentDTO>>() {}.getType());
-//        return studentDTOS;
-//    }
+    @Override
+    public List<TaskByActiveStatusResponseDTO> getTaskByActiveState(boolean status) {
+        List<Task> getTaskByActiveStatus = taskRepo.getTaskByActiveState(status);
+        modelMapper.createTypeMap(Task.class, TaskByActiveStatusResponseDTO.class).addMappings(mapper -> mapper.map(src -> src.getStudent().getStudentId(), TaskByActiveStatusResponseDTO::setStudent));
+        List<TaskByActiveStatusResponseDTO> taskByActiveStatusResponseDTOS = modelMapper.map(getTaskByActiveStatus, new TypeToken<List<TaskByActiveStatusResponseDTO>>() {}.getType());
+        return taskByActiveStatusResponseDTOS;
+    }
+
+
 }
